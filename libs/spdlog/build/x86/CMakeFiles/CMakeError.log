@@ -1,0 +1,67 @@
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /Users/anton/AndroidStudioProjects/libs/spdlog/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7d557/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_7d557.dir/build.make CMakeFiles/cmTC_7d557.dir/build
+Building CXX object CMakeFiles/cmTC_7d557.dir/src.cxx.o
+/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android16 --gcc-toolchain=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCMAKE_HAVE_LIBC_PTHREAD -fPIE -std=c++11 -o CMakeFiles/cmTC_7d557.dir/src.cxx.o -c /Users/anton/AndroidStudioProjects/libs/spdlog/build/x86/CMakeFiles/CMakeTmp/src.cxx
+/Users/anton/AndroidStudioProjects/libs/spdlog/build/x86/CMakeFiles/CMakeTmp/src.cxx:13:3: error: use of undeclared identifier 'pthread_cancel'
+  pthread_cancel(thread);
+  ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_7d557.dir/src.cxx.o] Error 1
+make: *** [cmTC_7d557/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /Users/anton/AndroidStudioProjects/libs/spdlog/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0b12c/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_0b12c.dir/build.make CMakeFiles/cmTC_0b12c.dir/build
+Building CXX object CMakeFiles/cmTC_0b12c.dir/CheckFunctionExists.cxx.o
+/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android16 --gcc-toolchain=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE -std=c++11 -o CMakeFiles/cmTC_0b12c.dir/CheckFunctionExists.cxx.o -c /Users/anton/AndroidStudioProjects/libs/spdlog/build/x86/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_0b12c
+/Users/anton/Library/Android/sdk/cmake/3.18.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b12c.dir/link.txt --verbose=1
+/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android16 --gcc-toolchain=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments -Wl,--gc-sections   CMakeFiles/cmTC_0b12c.dir/CheckFunctionExists.cxx.o -o cmTC_0b12c  -lpthreads -latomic -lm 
+ld: error: unable to find library -lpthreads
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_0b12c] Error 1
+make: *** [cmTC_0b12c/fast] Error 2
+
+
+
+Determining if the function pthread_create exists in the pthread failed with the following output:
+Change Dir: /Users/anton/AndroidStudioProjects/libs/spdlog/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_77799/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_77799.dir/build.make CMakeFiles/cmTC_77799.dir/build
+Building CXX object CMakeFiles/cmTC_77799.dir/CheckFunctionExists.cxx.o
+/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android16 --gcc-toolchain=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE -std=c++11 -o CMakeFiles/cmTC_77799.dir/CheckFunctionExists.cxx.o -c /Users/anton/AndroidStudioProjects/libs/spdlog/build/x86/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_77799
+/Users/anton/Library/Android/sdk/cmake/3.18.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_77799.dir/link.txt --verbose=1
+/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android16 --gcc-toolchain=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/anton/Library/Android/sdk/ndk/23.1.7779620-2/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments -Wl,--gc-sections   CMakeFiles/cmTC_77799.dir/CheckFunctionExists.cxx.o -o cmTC_77799  -lpthread -latomic -lm 
+ld: error: unable to find library -lpthread
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_77799] Error 1
+make: *** [cmTC_77799/fast] Error 2
+
+
+

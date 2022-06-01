@@ -1,0 +1,77 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_7fe9e/fast && /usr/bin/make  -f CMakeFiles/cmTC_7fe9e.dir/build.make CMakeFiles/cmTC_7fe9e.dir/build
+make[1]: Entering directory '/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7fe9e.dir/src.c.o
+/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=i686-none-linux-android16 --sysroot=/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DCMAKE_HAVE_LIBC_PTHREAD  -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -Wall -Wextra -Wwrite-strings -Wpointer-arith -Wimplicit-fallthrough -Wshadow -Wvla -Wformat=2 -Wno-format-nonliteral -Werror  -O2 -g -DNDEBUG -fPIE -MD -MT CMakeFiles/cmTC_7fe9e.dir/src.c.o -MF CMakeFiles/cmTC_7fe9e.dir/src.c.o.d -o CMakeFiles/cmTC_7fe9e.dir/src.c.o -c /home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp/src.c
+/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp/src.c:13:3: error: implicit declaration of function 'pthread_cancel' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+  pthread_cancel(thread);
+  ^
+/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp/src.c:13:3: note: did you mean 'pthread_once'?
+/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/pthread.h:275:5: note: 'pthread_once' declared here
+int pthread_once(pthread_once_t* __once, void (*__init_routine)(void));
+    ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_7fe9e.dir/build.make:79: CMakeFiles/cmTC_7fe9e.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_7fe9e/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_29adc/fast && /usr/bin/make  -f CMakeFiles/cmTC_29adc.dir/build.make CMakeFiles/cmTC_29adc.dir/build
+make[1]: Entering directory '/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_29adc.dir/CheckFunctionExists.c.o
+/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=i686-none-linux-android16 --sysroot=/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot   -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -Wall -Wextra -Wwrite-strings -Wpointer-arith -Wimplicit-fallthrough -Wshadow -Wvla -Wformat=2 -Wno-format-nonliteral -Werror -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -fPIE -MD -MT CMakeFiles/cmTC_29adc.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_29adc.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_29adc.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_29adc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_29adc.dir/link.txt --verbose=1
+/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=i686-none-linux-android16 --sysroot=/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -Wall -Wextra -Wwrite-strings -Wpointer-arith -Wimplicit-fallthrough -Wshadow -Wvla -Wformat=2 -Wno-format-nonliteral -Werror -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Qunused-arguments -Wl,--no-undefined  -Wl,--gc-sections  CMakeFiles/cmTC_29adc.dir/CheckFunctionExists.c.o -o cmTC_29adc  -lpthreads  -latomic -lm 
+ld: error: unable to find library -lpthreads
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_29adc.dir/build.make:100: cmTC_29adc] Error 1
+make[1]: Leaving directory '/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_29adc/fast] Error 2
+
+
+
+Determining if the function pthread_create exists in the pthread failed with the following output:
+Change Dir: /home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_737be/fast && /usr/bin/make  -f CMakeFiles/cmTC_737be.dir/build.make CMakeFiles/cmTC_737be.dir/build
+make[1]: Entering directory '/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_737be.dir/CheckFunctionExists.c.o
+/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=i686-none-linux-android16 --sysroot=/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot   -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -Wall -Wextra -Wwrite-strings -Wpointer-arith -Wimplicit-fallthrough -Wshadow -Wvla -Wformat=2 -Wno-format-nonliteral -Werror -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -fPIE -MD -MT CMakeFiles/cmTC_737be.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_737be.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_737be.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_737be
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_737be.dir/link.txt --verbose=1
+/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=i686-none-linux-android16 --sysroot=/home/daniyar/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -Wall -Wextra -Wwrite-strings -Wpointer-arith -Wimplicit-fallthrough -Wshadow -Wvla -Wformat=2 -Wno-format-nonliteral -Werror -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Qunused-arguments -Wl,--no-undefined  -Wl,--gc-sections  CMakeFiles/cmTC_737be.dir/CheckFunctionExists.c.o -o cmTC_737be  -lpthread  -latomic -lm 
+ld: error: unable to find library -lpthread
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_737be.dir/build.make:100: cmTC_737be] Error 1
+make[1]: Leaving directory '/home/daniyar/AndroidStudioProjects/libs/mbedtls/build/x86/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_737be/fast] Error 2
+
+
+
